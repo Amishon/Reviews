@@ -8,7 +8,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-34-213-253-99.us-west-2.compute.amazonaws.com',
+      host: 'ec2-35-162-43-91.us-west-2.compute.amazonaws.com',
       key: '~/.ssh/Amishon.pem',
       ref: 'origin/master',
       repo: 'git@github.com:Amishon/Reviews.git',

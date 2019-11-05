@@ -7,8 +7,8 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       addReview: false,
-      review_id: 906,
-      product_id: this.props.currentProduct,
+      review_id: 813,
+      product_id: 0,
       created: 0,
       title: '',
       body: '',
@@ -32,8 +32,7 @@ class ReviewList extends React.Component {
 
   postReview (event) {
     event.preventDefault();
-    // http://ec2-34-213-253-99.us-west-2.compute.amazonaws.com
-    axios.post('/reviews',  {
+    axios.post('http://ec2-35-162-43-91.us-west-2.compute.amazonaws.com/reviews',  {
         reviewToPost: {
           review_id: this.state.review_id,
           product_id: this.state.product_id,
@@ -129,12 +128,13 @@ class ReviewList extends React.Component {
             </div>
             <div>
               <button
-                className="review-button"
+                className="review-button post-review-button"
                 onClick={
                   () => this.setState({
                     addReview: true,
                     review_id: this.state.review_id + 1,
-                    created: Date.now()
+                    created: Date.now(),
+                    product_id: this.props.currentProduct
                   })
                 }
               >
@@ -148,52 +148,70 @@ class ReviewList extends React.Component {
               className="post-review-form"
               onSubmit={this.postReview}
             >
-              <div>
+              <div className="post-review-form-section">
                 <label>
-                  Star rating
-                  <input
-                    value={this.state.stars}
-                    onChange={
-                      event => {
-                        this.setState({
-                          stars: event.target.value
-                        });
-                      }
-                    }/>
+                  <h3 className="post-review-title">
+                    Star rating
+                  </h3>
+                  <div>
+                    <input
+                      value={this.state.stars}
+                      onChange={
+                        event => {
+                          this.setState({
+                            stars: event.target.value
+                          });
+                        }
+                      }/>
+                  </div>
                 </label>
               </div>
-              <div>
+              <div className="post-review-form-section">
                 <label>
-                  Add a title
-                  <textarea
-                    value={this.state.title}
-                    onChange={
-                      event => {
-                        this.setState({
-                          title: event.target.value
-                        });
+                  <h3 className="post-review-title">
+                    Add a title
+                  </h3>
+                  <div>
+                    <textarea
+                      className="post-review-text"
+                      value={this.state.title}
+                      onChange={
+                        event => {
+                          this.setState({
+                            title: event.target.value
+                          });
+                        }
                       }
-                    }
-                  />
+                    />
+                  </div>
                 </label>
               </div>
-              <div>
+              <div className="post-review-form-section">
                 <label>
+                  <h3 className="post-review-title">
                   Add a written review
-                  <textarea
-                    value={this.state.body}
-                    onChange={
-                      event => {
-                        this.setState({
-                          body: event.target.value
-                        });
+                  </h3>
+                  <div>
+                    <textarea
+                      className="post-review-text"
+                      value={this.state.body}
+                      onChange={
+                        event => {
+                          this.setState({
+                            body: event.target.value
+                          });
+                        }
                       }
-                    }
-                  />
+                    />
+                  </div>
                 </label>
               </div>
               <div>
-                <input type="submit" value="Submit" />
+                <input
+                  type="submit"
+                  className="review-button"
+                  value="Submit"
+                />
               </div>
             </form>
           }
