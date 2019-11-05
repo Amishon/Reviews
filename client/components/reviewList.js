@@ -32,7 +32,7 @@ class ReviewList extends React.Component {
 
   postReview (event) {
     event.preventDefault();
-    axios.post('http://ec2-34-213-253-99.us-west-2.compute.amazonaws.com/reviews',  {
+    axios.post('http://ec2-35-162-43-91.us-west-2.compute.amazonaws.com/reviews',  {
         reviewToPost: {
           review_id: this.state.review_id,
           product_id: this.state.product_id,

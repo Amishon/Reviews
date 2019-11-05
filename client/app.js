@@ -29,7 +29,7 @@ class Reviews extends React.Component {
   }
 
   getProductReviews () {
-    axios.get('http://ec2-34-213-253-99.us-west-2.compute.amazonaws.com/reviews', {
+    axios.get('http://ec2-35-162-43-91.us-west-2.compute.amazonaws.com/reviews', {
       params: {
         product_id: this.state.currentProduct
       }
@@ -43,7 +43,7 @@ class Reviews extends React.Component {
   }
 
   updateHelpfuls (numberOfHelpfuls, reviewId) {
-    axios.put('http://ec2-34-213-253-99.us-west-2.compute.amazonaws.com/reviews', {
+    axios.put('http://ec2-35-162-43-91.us-west-2.compute.amazonaws.com/reviews', {
       review_id: reviewId,
       helpfuls: numberOfHelpfuls
     })
